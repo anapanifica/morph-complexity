@@ -6,7 +6,7 @@
 
 int main() {
     std::ios_base::sync_with_stdio(false);
-    int MXNUM = 100000;
+    int MXNUM = 30000;
 
     std::vector<double> p;
 

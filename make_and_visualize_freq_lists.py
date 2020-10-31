@@ -81,34 +81,34 @@ def transform (freq_file, pure_file):
 
 
 def main ():
-    token_count = tokenization ("tom.txt")
+    token_count = tokenization ("tom_30.txt")
     frequency_list (token_count, "tom_freq.txt")
     transform ("tom_freq.txt", "tom_pure.txt")
 
-    token_count = tokenization ("avar1.txt")
+    token_count = tokenization ("avar1_30.txt")
     frequency_list (token_count, "avar1_freq.txt")
     transform ("avar1_freq.txt", "avar1_pure.txt")
 
-    token_count = tokenization ("avar2.txt")
+    token_count = tokenization ("avar2_30.txt")
     frequency_list (token_count, "avar2_freq.txt")  
     transform ("avar2_freq.txt", "avar2_pure.txt")
 
-    token_count = tokenization ("tkt.txt")
-    frequency_list (token_count, "tkt_freq.txt")  
-    transform ("tkt_freq.txt", "tkt_pure.txt")
+##    token_count = tokenization ("tkt.txt")
+##    frequency_list (token_count, "tkt_freq.txt")  
+##    transform ("tkt_freq.txt", "tkt_pure.txt")
 
 ##    token_count = tokenization ("chir.txt")
 ##    frequency_list (token_count, "chir_freq.txt")  
 
-    token_count = tokenization ("chir1.txt")
+    token_count = tokenization ("chir1_30.txt")
     frequency_list (token_count, "chir1_freq.txt")  
     transform ("chir1_freq.txt", "chir1_pure.txt")
 
-    token_count = tokenization ("chir2.txt")
+    token_count = tokenization ("chir2_30.txt")
     frequency_list (token_count, "chir2_freq.txt")
     transform ("chir2_freq.txt", "chir2_pure.txt")
 
-    token_count = tokenization ("anna.txt")
+    token_count = tokenization ("anna_30.txt")
     frequency_list (token_count, "anna_freq.txt")
     transform ("anna_freq.txt", "anna_pure.txt")
 
