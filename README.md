@@ -2,6 +2,11 @@
 
 The Heap's curve shows the dependence of the number of token types and the total number of tokens in a corpus. To draw the Heap's curve, we "read" the corpus from the beginning to the end and place new dots to the graph depending on whether each new token has already occured or not.
 
+
+Figure 0. Heap's curves for corpora of different size.
+![Figure 0](Figure_0.png)
+
+
 We use the following formula to simulate the Heap's curve: <img src="https://render.githubusercontent.com/render/math?math=f(n) = f(n-1)%2B\sum_{i}p_i*(1-p_i)^{n-1}">. The main idea is that we first compile a frequency list and after that add tokens from this list to the graph according to their frequency.
 
 
