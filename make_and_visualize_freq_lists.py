@@ -49,7 +49,7 @@ def tokenization (path):
     print ("Different types of tokens are : ", types)
     print ("The TTR (Type by Tokens Ratio) is :", ttr)
 
-    return token_count
+    return token_count, unique_words
 
 
 def frequency_list (token_count, file_name):
@@ -80,23 +80,96 @@ def transform (freq_file, pure_file):
                     print(x, file=f)
 
 
+def plot_freq_list ():
+        with open("avar1_pure.txt", 'r') as f:
+                ar1 = [float(x) for x in f.read().strip().split()][:100000]
+                # ar1.reverse()
+
+        with open("avar2_pure.txt", 'r') as f:
+                ar2 = [float(x) for x in f.read().strip().split()][:100000]
+                # ar2.reverse()
+
+        with open("tom_pure.txt", 'r') as f:
+                ar3 = [float(x) for x in f.read().strip().split()][:100000]
+                # ar3.reverse()
+
+        with open("tkt_pure.txt", 'r') as f:
+                ar4 = [float(x) for x in f.read().strip().split()][:100000]
+                # ar4.reverse()
+
+        with open("chir1_pure.txt", 'r') as f:
+                ar5 = [float(x) for x in f.read().strip().split()][:100000]
+                # ar4.reverse()
+
+        with open("chir2_pure.txt", 'r') as f:
+                ar6 = [float(x) for x in f.read().strip().split()][:100000]
+                # ar4.reverse()
+
+        with open("anna_pure.txt", 'r') as f:
+                ar7 = [float(x) for x in f.read().strip().split()][:100000]
+                # ar4.reverse()
+
+        #print(sum(ar1), sum(ar2), sum(ar3), sum(ar4))
+
+        plt.plot(list(range(len(ar1))), ar1, label="avar 1 (36 155 tokens)")
+        plt.plot(list(range(len(ar2))), ar2, label="avar 2 (49 141 tokens)")
+        plt.plot(list(range(len(ar3))), ar3, label="tom sawyer (76 664 tokens)")
+        plt.plot(list(range(len(ar4))), ar4, label="tokita (13 337 tokens)")
+        plt.plot(list(range(len(ar5))), ar5, label="chir 1 (210 274 tokens)")
+        plt.plot(list(range(len(ar6))), ar6, label="chir 2 (212 291 tokens)")
+        plt.plot(list(range(len(ar7))), ar7, label="anna karenina (269 580 tokens)")
+
+    ##    plt.plot(list(range(len(ar1))), ar1, label="avar 1 (26 363 tokens)")
+    ##    plt.plot(list(range(len(ar2))), ar2, label="avar 2 (26 306 tokens)")
+    ##    plt.plot(list(range(len(ar3))), ar3, label="tom sawyer (26 371 tokens)")
+    ####    plt.plot(list(range(len(ar4))), ar4, label="tokita (13 337 tokens)")
+    ##    plt.plot(list(range(len(ar5))), ar5, label="chir 1 (26 370 tokens)")
+    ##    plt.plot(list(range(len(ar6))), ar6, label="chir 2 (26 395 tokens)")
+    ##    plt.plot(list(range(len(ar7))), ar7, label="anna karenina (26 353 tokens)")
+        plt.ylabel('Frequency')
+        plt.xlabel('rank')
+        plt.legend()
+        plt.show()
+
+def plot_heap ():
+
+    unique_words_tom = tokenization ("tom.txt")[1]
+    unique_words_avar1 = tokenization ("avar1.txt")[1]
+    unique_words_avar2 = tokenization ("avar2.txt")[1]
+    unique_words_tkt = tokenization ("tkt.txt")[1]
+    unique_words_chir1 = tokenization ("chir1.txt")[1]
+    unique_words_chir2 = tokenization ("chir2.txt")[1]
+    unique_words_anna = tokenization ("anna.txt")[1]
+
+    plt.plot(list(range(len(unique_words_tom))), [i for i in unique_words_tom], label="avar 1 (36 155 tokens)")
+    plt.plot(list(range(len(unique_words_avar1))), [i for i in unique_words_avar1], label="avar 2 (49 141 tokens)")
+    plt.plot(list(range(len(unique_words_avar2))), [i for i in unique_words_avar2], label="tom sawyer (76 664 tokens)")
+    plt.plot(list(range(len(unique_words_tkt))), [i for i in unique_words_tkt], label="tokita (13 337 tokens)")
+    plt.plot(list(range(len(unique_words_chir1))), [i for i in unique_words_chir1], label="chir 1 (210 274 tokens)")
+    plt.plot(list(range(len(unique_words_chir2))), [i for i in unique_words_chir2], label="chir 2 (212 291 tokens)")
+    plt.plot(list(range(len(unique_words_anna))), [i for i in unique_words_anna], label="anna karenina (269 580 tokens)")
+    plt.ylabel('Different types of tokens (|V|)')
+    plt.xlabel('Total no. of tokens (N)')
+    plt.legend()
+    plt.show()
+
 def main ():
     #token_count = tokenization ("tom_30.txt")
-    token_count = tokenization ("tom.txt")
+    token_count = tokenization ("tom.txt")[0]
     frequency_list (token_count, "tom_freq.txt")
     transform ("tom_freq.txt", "tom_pure.txt")
 
     #token_count = tokenization ("avar1_30.txt")
-    token_count = tokenization ("avar1.txt")
+    token_count = tokenization ("avar1.txt")[0]
     frequency_list (token_count, "avar1_freq.txt")
     transform ("avar1_freq.txt", "avar1_pure.txt")
 
     #token_count = tokenization ("avar2_30.txt")
-    token_count = tokenization ("avar2.txt")
+    token_count = tokenization ("avar2.txt")[0]
     frequency_list (token_count, "avar2_freq.txt")  
     transform ("avar2_freq.txt", "avar2_pure.txt")
 
-    token_count = tokenization ("tkt.txt")
+    token_count = tokenization ("tkt.txt")[0]
     frequency_list (token_count, "tkt_freq.txt")  
     transform ("tkt_freq.txt", "tkt_pure.txt")
 
@@ -104,70 +177,23 @@ def main ():
 ##    frequency_list (token_count, "chir_freq.txt")  
 
     #token_count = tokenization ("chir1_30.txt")
-    token_count = tokenization ("chir1.txt")
+    token_count = tokenization ("chir1.txt")[0]
     frequency_list (token_count, "chir1_freq.txt")  
     transform ("chir1_freq.txt", "chir1_pure.txt")
 
     #token_count = tokenization ("chir2_30.txt")
-    token_count = tokenization ("chir2.txt")
+    token_count = tokenization ("chir2.txt")[0]
     frequency_list (token_count, "chir2_freq.txt")
     transform ("chir2_freq.txt", "chir2_pure.txt")
 
     #token_count = tokenization ("anna_30.txt")
-    token_count = tokenization ("anna.txt")
+    token_count = tokenization ("anna.txt")[0]
     frequency_list (token_count, "anna_freq.txt")
     transform ("anna_freq.txt", "anna_pure.txt")
 
+    #plot_freq_list ()
 
-    with open("avar1_pure.txt", 'r') as f:
-            ar1 = [float(x) for x in f.read().strip().split()][:100000]
-            # ar1.reverse()
-
-    with open("avar2_pure.txt", 'r') as f:
-            ar2 = [float(x) for x in f.read().strip().split()][:100000]
-            # ar2.reverse()
-
-    with open("tom_pure.txt", 'r') as f:
-            ar3 = [float(x) for x in f.read().strip().split()][:100000]
-            # ar3.reverse()
-
-    with open("tkt_pure.txt", 'r') as f:
-            ar4 = [float(x) for x in f.read().strip().split()][:100000]
-            # ar4.reverse()
-
-    with open("chir1_pure.txt", 'r') as f:
-            ar5 = [float(x) for x in f.read().strip().split()][:100000]
-            # ar4.reverse()
-
-    with open("chir2_pure.txt", 'r') as f:
-            ar6 = [float(x) for x in f.read().strip().split()][:100000]
-            # ar4.reverse()
-
-    with open("anna_pure.txt", 'r') as f:
-            ar7 = [float(x) for x in f.read().strip().split()][:100000]
-            # ar4.reverse()
-
-    #print(sum(ar1), sum(ar2), sum(ar3), sum(ar4))
-
-    plt.plot(list(range(len(ar1))), ar1, label="avar 1 (36 155 tokens)")
-    plt.plot(list(range(len(ar2))), ar2, label="avar 2 (49 141 tokens)")
-    plt.plot(list(range(len(ar3))), ar3, label="tom sawyer (76 664 tokens)")
-    plt.plot(list(range(len(ar4))), ar4, label="tokita (13 337 tokens)")
-    plt.plot(list(range(len(ar5))), ar5, label="chir 1 (210 274 tokens)")
-    plt.plot(list(range(len(ar6))), ar6, label="chir 2 (212 291 tokens)")
-    plt.plot(list(range(len(ar7))), ar7, label="anna karenina (269 580 tokens)")
-
-##    plt.plot(list(range(len(ar1))), ar1, label="avar 1 (26 363 tokens)")
-##    plt.plot(list(range(len(ar2))), ar2, label="avar 2 (26 306 tokens)")
-##    plt.plot(list(range(len(ar3))), ar3, label="tom sawyer (26 371 tokens)")
-####    plt.plot(list(range(len(ar4))), ar4, label="tokita (13 337 tokens)")
-##    plt.plot(list(range(len(ar5))), ar5, label="chir 1 (26 370 tokens)")
-##    plt.plot(list(range(len(ar6))), ar6, label="chir 2 (26 395 tokens)")
-##    plt.plot(list(range(len(ar7))), ar7, label="anna karenina (26 353 tokens)")
-    plt.ylabel('Frequency')
-    plt.xlabel('rank')
-    plt.legend()
-    plt.show()
+    plot_heap ()
 
 
 if __name__ == '__main__':
