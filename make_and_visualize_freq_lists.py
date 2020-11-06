@@ -141,15 +141,16 @@ def plot_heap ():
     unique_words_chir2 = tokenization ("chir2.txt")[1]
     unique_words_anna = tokenization ("anna.txt")[1]
 
-    plt.plot(list(range(len(unique_words_tom))), [i for i in unique_words_tom], label="avar 1 (36 155 tokens)")
-    plt.plot(list(range(len(unique_words_avar1))), [i for i in unique_words_avar1], label="avar 2 (49 141 tokens)")
-    plt.plot(list(range(len(unique_words_avar2))), [i for i in unique_words_avar2], label="tom sawyer (76 664 tokens)")
-    plt.plot(list(range(len(unique_words_tkt))), [i for i in unique_words_tkt], label="tokita (13 337 tokens)")
-    plt.plot(list(range(len(unique_words_chir1))), [i for i in unique_words_chir1], label="chir 1 (210 274 tokens)")
-    plt.plot(list(range(len(unique_words_chir2))), [i for i in unique_words_chir2], label="chir 2 (212 291 tokens)")
-    plt.plot(list(range(len(unique_words_anna))), [i for i in unique_words_anna], label="anna karenina (269 580 tokens)")
-    plt.ylabel('Different types of tokens (|V|)')
-    plt.xlabel('Total no. of tokens (N)')
+    m=500
+    plt.plot([(i+1)*m for i in range(len(unique_words_tom))], [i for i in unique_words_tom], label="avar 1 (36 155 tokens)")
+    plt.plot([(i+1)*m for i in range(len(unique_words_avar1))], [i for i in unique_words_avar1], label="avar 2 (49 141 tokens)")
+    plt.plot([(i+1)*m for i in range(len(unique_words_avar2))], [i for i in unique_words_avar2], label="tom sawyer (76 664 tokens)")
+    plt.plot([(i+1)*m for i in range(len(unique_words_tkt))], [i for i in unique_words_tkt], label="tokita (13 337 tokens)")
+    plt.plot([(i+1)*m for i in range(len(unique_words_chir1))], [i for i in unique_words_chir1], label="chir 1 (210 274 tokens)")
+    plt.plot([(i+1)*m for i in range(len(unique_words_chir2))], [i for i in unique_words_chir2], label="chir 2 (212 291 tokens)")
+    plt.plot([(i+1)*m for i in range(len(unique_words_anna))], [i for i in unique_words_anna], label="anna karenina (269 580 tokens)")
+    plt.ylabel('Different types of tokens')
+    plt.xlabel('Total no. of tokens')
     plt.legend()
     plt.show()
 
