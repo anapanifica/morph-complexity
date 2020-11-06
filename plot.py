@@ -37,7 +37,8 @@ plt.plot(list(range(len(ar3))), ar3, label="tom sawyer (26 371 tokens)")
 plt.plot(list(range(len(ar5))), ar5, label="chir 1 (26 370 tokens)")
 plt.plot(list(range(len(ar6))), ar6, label="chir 2 (26 395 tokens)")
 plt.plot(list(range(len(ar7))), ar7, label="anna karenina (26 353 tokens)")
-
+plt.ylabel('Different types of tokens')
+plt.xlabel('Total no. of tokens')
 
 plt.legend()
 plt.show()

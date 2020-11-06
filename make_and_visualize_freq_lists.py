@@ -81,34 +81,40 @@ def transform (freq_file, pure_file):
 
 
 def main ():
-    token_count = tokenization ("tom_30.txt")
+    #token_count = tokenization ("tom_30.txt")
+    token_count = tokenization ("tom.txt")
     frequency_list (token_count, "tom_freq.txt")
     transform ("tom_freq.txt", "tom_pure.txt")
 
-    token_count = tokenization ("avar1_30.txt")
+    #token_count = tokenization ("avar1_30.txt")
+    token_count = tokenization ("avar1.txt")
     frequency_list (token_count, "avar1_freq.txt")
     transform ("avar1_freq.txt", "avar1_pure.txt")
 
-    token_count = tokenization ("avar2_30.txt")
+    #token_count = tokenization ("avar2_30.txt")
+    token_count = tokenization ("avar2.txt")
     frequency_list (token_count, "avar2_freq.txt")  
     transform ("avar2_freq.txt", "avar2_pure.txt")
 
-##    token_count = tokenization ("tkt.txt")
-##    frequency_list (token_count, "tkt_freq.txt")  
-##    transform ("tkt_freq.txt", "tkt_pure.txt")
+    token_count = tokenization ("tkt.txt")
+    frequency_list (token_count, "tkt_freq.txt")  
+    transform ("tkt_freq.txt", "tkt_pure.txt")
 
 ##    token_count = tokenization ("chir.txt")
 ##    frequency_list (token_count, "chir_freq.txt")  
 
-    token_count = tokenization ("chir1_30.txt")
+    #token_count = tokenization ("chir1_30.txt")
+    token_count = tokenization ("chir1.txt")
     frequency_list (token_count, "chir1_freq.txt")  
     transform ("chir1_freq.txt", "chir1_pure.txt")
 
-    token_count = tokenization ("chir2_30.txt")
+    #token_count = tokenization ("chir2_30.txt")
+    token_count = tokenization ("chir2.txt")
     frequency_list (token_count, "chir2_freq.txt")
     transform ("chir2_freq.txt", "chir2_pure.txt")
 
-    token_count = tokenization ("anna_30.txt")
+    #token_count = tokenization ("anna_30.txt")
+    token_count = tokenization ("anna.txt")
     frequency_list (token_count, "anna_freq.txt")
     transform ("anna_freq.txt", "anna_pure.txt")
 
@@ -143,13 +149,23 @@ def main ():
 
     #print(sum(ar1), sum(ar2), sum(ar3), sum(ar4))
 
-    plt.plot(list(range(len(ar1))), ar1, label="avar 1")
-    plt.plot(list(range(len(ar2))), ar2, label="avar 2")
-    plt.plot(list(range(len(ar3))), ar3, label="tom sawyer")
-    plt.plot(list(range(len(ar4))), ar4, label="tokita")
-    plt.plot(list(range(len(ar5))), ar5, label="chir 1")
-    plt.plot(list(range(len(ar6))), ar6, label="chir 2")
-    plt.plot(list(range(len(ar7))), ar7, label="anna karenina")
+    plt.plot(list(range(len(ar1))), ar1, label="avar 1 (36 155 tokens)")
+    plt.plot(list(range(len(ar2))), ar2, label="avar 2 (49 141 tokens)")
+    plt.plot(list(range(len(ar3))), ar3, label="tom sawyer (76 664 tokens)")
+    plt.plot(list(range(len(ar4))), ar4, label="tokita (13 337 tokens)")
+    plt.plot(list(range(len(ar5))), ar5, label="chir 1 (210 274 tokens)")
+    plt.plot(list(range(len(ar6))), ar6, label="chir 2 (212 291 tokens)")
+    plt.plot(list(range(len(ar7))), ar7, label="anna karenina (269 580 tokens)")
+
+##    plt.plot(list(range(len(ar1))), ar1, label="avar 1 (26 363 tokens)")
+##    plt.plot(list(range(len(ar2))), ar2, label="avar 2 (26 306 tokens)")
+##    plt.plot(list(range(len(ar3))), ar3, label="tom sawyer (26 371 tokens)")
+####    plt.plot(list(range(len(ar4))), ar4, label="tokita (13 337 tokens)")
+##    plt.plot(list(range(len(ar5))), ar5, label="chir 1 (26 370 tokens)")
+##    plt.plot(list(range(len(ar6))), ar6, label="chir 2 (26 395 tokens)")
+##    plt.plot(list(range(len(ar7))), ar7, label="anna karenina (26 353 tokens)")
+    plt.ylabel('Frequency')
+    plt.xlabel('rank')
     plt.legend()
     plt.show()
 
