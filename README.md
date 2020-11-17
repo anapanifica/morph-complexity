@@ -1,6 +1,6 @@
 # Morphological complexity
 
-Heap's curve shows the dependence of the number of token types and the total number of tokens in a corpus. To draw the Heap's curve, we "read" the corpus from the beginning to the end and place new dots to the graph depending on whether each new token has already occured or not.
+The Heap's curve shows the dependence of the number of token types and the total number of tokens in a corpus. To draw the Heap's curve, we "read" the corpus from the beginning to the end and place new dots to the graph depending on whether each new token has already occured or not.
 
 
 Figure 0. Heap's curves for corpora of different size.
@@ -33,4 +33,21 @@ Figure 4. Zipf's curves for corpora of similar size.
 ![Figure 4](random_texts/Figure_4.png)
 
 Figure 4 (zoomed). Zipf's curves for corpora of similar size.
-![Figure 4 (zoomed](random_texts/Figure_4_zoomed.png)
+![Figure 4 (zoomed)](random_texts/Figure_4_zoomed.png)
+
+
+## Bible texts
+
+Gospel of Luke in four Daghestanian languages, Russian and English.
+
+Figure 5. Zipf.
+![Figure 5](bible_texts/Figure_5.png)
+
+Figure 5. Zipf (zoomed).
+![Figure 5 (zoomed)](bible_texts/Figure_5_zoomed.png)
+
+Figure 6. (Real) Heap.
+![Figure 6](bible_texts/Figure_6.png)
+
+Figure 7. Simulated Heap.
+![Figure 7](bible_texts/Figure_7.png)
