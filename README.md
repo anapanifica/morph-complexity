@@ -51,3 +51,20 @@ Figure 6. (Real) Heap.
 
 Figure 7. Simulated Heap.
 ![Figure 7](bible_texts/Figure_7.png)
+
+
+## Sampling
+
+Sampling of 100 sentences 1000 times (Bible texts).
+
+Figure 8. Distribution of the number of token types in 100 sentences.
+![Figure 8](sampling/Figure_8.png)
+
+Figure 9. Distribution of TTR in 100 sentences.
+![Figure 9](sampling/Figure_9.png)
+
+Figure 10. Distribution of the number of token types in 100 sentences (y = probability density function).
+![Figure 10](sampling/Figure_10.png)
+
+Figure 11. Distribution of TTR in 100 sentences (y = probability density function).
+![Figure 11](sampling/Figure_11.png)
