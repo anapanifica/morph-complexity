@@ -73,3 +73,6 @@ Sampling of n sentences so that the total number of tokens would be about 1000 (
 
 Figure 12. Distribution of the number of token types in a sample of sentences.
 ![Figure 12](sampling/Figure_12.png)
+
+Figure 13. Distribution of TTR in a sample of sentences.
+![Figure 13](sampling/Figure_13.png)
