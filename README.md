@@ -68,3 +68,8 @@ Figure 10. Distribution of the number of token types in 100 sentences (y = proba
 
 Figure 11. Distribution of TTR in 100 sentences (y = probability density function).
 ![Figure 11](sampling/Figure_11.png)
+
+Sampling of n sentences so that the total number of tokens would be about 1000 (Bible texts).  
+
+Figure 12. Distribution of the number of token types in a sample of sentences.
+![Figure 12](sampling/Figure_12.png)
