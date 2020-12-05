@@ -44,16 +44,9 @@ def count_number_of_tokens_and_word_types (sent_sample):
         else:
             token_count[i] = 1
     
-##        #count types after every m tokens for Heap's law
-##        if (counter%m == 0):
-##            unique_words.append(len(token_count.keys()))
-##        counter += 1
-        
-##    unique_words = unique_words[1:]
     types = len(token_count.keys())
     ttr = types/tokens
 
-    #print("\nText : ", path)
 ##    print ("The total number of tokens are : ", tokens)
 ##    print ("Different types of tokens are : ", types)
 ##    print ("The TTR (Type by Tokens Ratio) is :", ttr)
@@ -64,7 +57,7 @@ def do_sampling_and_get_values (sentences):
     values = []
     for i in range (1000):
         sent_sample = random.sample(sentences, 100)
-        value = count_number_of_tokens_and_word_types (sent_sample)[1] # 1 for types; 2 for ttr
+        value = count_number_of_tokens_and_word_types (sent_sample)[2] # 0 for tokens; 1 for types; 2 for ttr
         values.append(value)
 
     return values
@@ -72,31 +65,35 @@ def do_sampling_and_get_values (sentences):
 
 def main ():
 
-    #plotting histograms
-    for i, language in enumerate(['agx', 'ava', 'dar', 'eng', 'rus', 'tab']):
-        ax = plt.subplot(3, 2, i + 1)
-        sentences = make_list_with_sentences ("bible_texts/%s-luke.txt" % language)
-        values = do_sampling_and_get_values (sentences)
-        ax.hist(values, bins = 50,
-             color = 'skyblue', edgecolor = 'black')
-        ax.set_title('%s' % language)
-        ax.set_xlabel('number of token types in 100 sentences')
+##    #plotting histograms
 
-    plt.tight_layout()
-    plt.show()
+##    #histogram with facetization
 
-
-
-##    languages = ['agx', 'ava', 'dar', 'eng', 'rus', 'tab']
-##    for language in languages:        
+##    for i, language in enumerate(['agx', 'ava', 'dar', 'eng', 'rus', 'tab']):
+##        ax = plt.subplot(3, 2, i + 1)
 ##        sentences = make_list_with_sentences ("bible_texts/%s-luke.txt" % language)
 ##        values = do_sampling_and_get_values (sentences)
+##        ax.hist(values, bins = 50,
+##             color = 'skyblue', edgecolor = 'black')
+##        ax.set_title('%s' % language)
+##        ax.set_xlabel('number of token types in 100 sentences')
 ##
-##        sns.distplot(values, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 2}, label = language)
-##
-##    plt.legend(title = 'Language')
-##    plt.xlabel('TTR in 100 sentences')
+##    plt.tight_layout()
 ##    plt.show()
+
+
+    #histogram with all languages on the same graph
+
+    languages = ['agx', 'ava', 'dar', 'eng', 'rus', 'tab']
+    for language in languages:        
+        sentences = make_list_with_sentences ("../bible_texts/%s-luke.txt" % language)
+        values = do_sampling_and_get_values (sentences)
+
+        sns.distplot(values, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 2}, label = language)
+
+    plt.legend(title = 'Language')
+    plt.xlabel('TTR in 100 sentences')
+    plt.show()
 
 
 if __name__ == '__main__':
