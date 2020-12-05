@@ -13,12 +13,15 @@ def make_list_with_sentences (path):
 
     
     #remove all special characters except - _ . 
-    special_chars = re.compile('[`~@#$%^&*()+={}|\[\]:";<>,\/“”]!?')
-    txt_lower = special_chars.sub("", txt_lower)
+##    special_chars = re.compile('[`~@#$%^&*\(\)+={}|\[\]:";<>,\/\“\”]!\«\»')
+##    txt_lower = special_chars.sub("", txt_lower)
+##    txt_lower = re.sub("[^а-яa-z0-9.? ]+", '', txt_lower)
+##    txt_lower = re.sub(r" +", ' ', txt_lower)
 
 
-    sentences = txt_lower.split('.')
-    sentences = [x for x in sentences if x != ''] # remove empty sentences; also manually removed ". . ." fragment in the avar bible
+    sentences = re.split('\.', txt_lower)
+    sentences = [x for x in sentences if x != ''] # remove empty sentences
+    # also manually removed ". . ." fragment in the avar bible
     #print(sentences[1:20])
 
     return sentences
@@ -48,8 +51,8 @@ def count_number_of_tokens_and_word_types (text):
 ##        if (counter%m == 0):
 ##            unique_words.append(len(token_count.keys()))
 ##        counter += 1
-
-
+##    if tokens == 0:
+##        print ("Can't find any tokens in this sentence:", text)
     types = len(token_count.keys())
     ttr = types/tokens
 
@@ -66,13 +69,16 @@ def do_sampling_and_get_values (sentences):
         sent_sample = []
         while i < 1000: 
             sent = random.choice(sentences) #choose a sentence
-            #print(sent)
-            n_of_tokens = count_number_of_tokens_and_word_types (sent)[0] # count no. of tokens in this sentence
+##            print(sent)
+            try:
+                n_of_tokens = count_number_of_tokens_and_word_types (sent)[0] # count no. of tokens in this sentence
             #print(n_of_tokens)
-            sent_sample.append(sent) # add the sentence to the sample
-            i += n_of_tokens
+                sent_sample.append(sent) # add the sentence to the sample
+                i += n_of_tokens
+            except ZeroDivisionError:
+                print ("Can't find any tokens in this sentence:", sent)
         sent_sample = ' '.join(sent_sample) # unite all sentence in one text
-        value = count_number_of_tokens_and_word_types (sent_sample)[1] # 0 for tokens; 1 for types; 2 for ttr
+        value = count_number_of_tokens_and_word_types (sent_sample)[2] # 0 for tokens; 1 for types; 2 for ttr
         values.append(value)
 
     return values
@@ -100,6 +106,7 @@ def main ():
     #histogram with all languages on the same graph
 
     languages = ['agx', 'ava', 'dar', 'eng', 'rus', 'tab']
+    #languages = ['dar']
     for language in languages:
         print(language)
         sentences = make_list_with_sentences ("../bible_texts/%s-luke.txt" % language)
@@ -108,7 +115,7 @@ def main ():
         sns.distplot(values, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 2}, label = language)
 
     plt.legend(title = 'Language')
-    plt.xlabel('number of token types in a sample of random sentences (~ 1000 tokens)')
+    plt.xlabel('TTR in a sample of random sentences (~ 1000 tokens)')
     plt.show()
 
 
