@@ -76,3 +76,6 @@ Figure 12. Distribution of the number of token types in a sample of sentences.
 
 Figure 13. Distribution of TTR in a sample of sentences.
 ![Figure 13](sampling/Figure_13.png)
+
+Figure 14. Distribution of TTR in a sample of sentences (+ non-bible texts).
+![Figure 13](sampling/Figure_14.png)
