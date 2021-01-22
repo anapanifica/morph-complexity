@@ -27,3 +27,8 @@ bible_texts/eng-luke.txt
 bible_texts/rus-luke.txt
 bible_texts/tab-luke.txt
 .DS_Store
+random_texts_cleaned/avar-drama.txt
+random_texts_cleaned/avar-poetry.txt
+random_texts_cleaned/eng-tom-sawyer.txt
+random_texts_cleaned/rus-anna-karenina.txt
+sampling/.DS_Store
