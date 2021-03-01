@@ -32,3 +32,6 @@ random_texts_cleaned/avar-poetry.txt
 random_texts_cleaned/eng-tom-sawyer.txt
 random_texts_cleaned/rus-anna-karenina.txt
 sampling/.DS_Store
+bible_texts/.DS_Store
+folklore_texts/.DS_Store
+folklore_texts/*.txt
