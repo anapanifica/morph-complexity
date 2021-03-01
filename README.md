@@ -79,3 +79,21 @@ Figure 13. Distribution of TTR in a sample of sentences.
 
 Figure 14. Distribution of TTR in a sample of sentences (+ non-bible texts).
 ![Figure 13](sampling/Figure_14.png)
+
+## Folklore texts
+
+Figure 15. Distribution of TTR in samples of sentences from folklore texts.
+![Figure 15](sampling/Figure_15.png)
+
+The total number of tokens:  
+agx-folklore.txt 4896  
+ava-folklore.txt 36058  
+kum-folklore.txt 45471  
+rut-folklore.txt 19139  
+dar-folklore.txt 32456  
+tab-folklore.txt 23706  
+lak-folklore.txt 31191  
+lez-folklore.txt 39571  
+nog-folklore.txt 5065  
+tkr-folklore.txt 4571  
+tat-folklore.txt 18961  
