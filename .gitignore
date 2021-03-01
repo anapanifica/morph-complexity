@@ -35,3 +35,5 @@ sampling/.DS_Store
 bible_texts/.DS_Store
 folklore_texts/.DS_Store
 folklore_texts/*.txt
+folklore_texts/SVOD/*.txt
+folklore_texts/SVOD/*.doc
