@@ -49,7 +49,7 @@ def tokenization (path):
     print ("Different types of tokens are : ", types)
     print ("The TTR (Type by Tokens Ratio) is :", ttr)
 
-    return token_count, unique_words
+    return token_count
 
 
 def frequency_list (token_count, file_name):
@@ -76,7 +76,8 @@ def main ():
     for language in languages:
         path = "../folklore_texts/%s.txt" % language
         token_count = tokenization (path)
-
+        file_name = language + "_freq.txt"
+        frequency_list (token_count, file_name)
 ##    token_count = tokenization ("tom.txt")[0]
 ##    frequency_list (token_count, "tom_freq.txt")
 

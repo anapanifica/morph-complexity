@@ -96,4 +96,9 @@ lak-folklore.txt 31191
 lez-folklore.txt 39571  
 nog-folklore.txt 5065  
 tkr-folklore.txt 4571  
-tat-folklore.txt 18961  
+tat-folklore.txt 18961 
+
+Russian translations are added as `rus-folklore`.
+
+Figure 16. Distribution of TTR in samples of sentences from folklore texts.
+![Figure 16](sampling/Figure_16.png)
