@@ -1,0 +1,58 @@
+---
+title: "Comparison of TTR between languages"
+output: html_notebook
+---
+
+```{r}
+library("tidyverse")
+```
+
+
+```{r}
+df <- read.csv("language_comparison_100_datapoints_per_language.txt", header = TRUE, sep = ",")
+df
+```
+
+
+```{r}
+df_long <- gather(df)
+df_long
+```
+
+```{r}
+aov_res <- aov(value ~ key, data = df1)
+summary(aov_res)
+```
+
+
+
+```{r}
+df_long %>%
+  filter(key == "tkr.folklore" | key == "lez.folklore" | key == "lak.folklore") -> df1
+df1
+```
+
+```{r}
+aov_res <- aov(value ~ key, data = df_long)
+summary(aov_res)
+```
+
+
+
+
+
+```{r}
+library("ggpubr")
+```
+
+```{r}
+df_long  %>%
+  ggplot(aes(reorder(key, value, FUN = median), value, color = key))+
+  #ggplot(aes(x = reorder(key, value, FUN = median), y = value), fill = reorder(key, value, FUN = median))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.1)+
+  labs(x = "Language",
+       y = "TTR")+
+  theme_bw()+
+  theme(legend.position = "none")
+```

@@ -102,3 +102,20 @@ Russian translations are added as `rus-folklore`.
 
 Figure 16. Distribution of TTR in samples of sentences from folklore texts.
 ![Figure 16](sampling/Figure_16.png)
+
+All previous plots were build based on 1000 TTRs per language. In Figures 17.1 and 17.2 there are only 100 TTRs per language.
+
+Figure 17.1. Distribution of TTR in samples of sentences from folklore texts (100 TTRs / language).
+![Figure 17.1](sampling/Figure_17.1.png)
+
+Just a bit different visualization of the same data:
+
+Figure 17.2. Distribution of TTR in samples of sentences from folklore texts (100 TTRs / language).
+![Figure 17.2](sampling/Figure_17.2.png)
+
+Comparison of TTR across volumes for languages with a large number of tokens:
+
+Figure 18. TTR in folklore texts (1000 TTRs / language).
+![Figure 18](sampling/Figure_18.png)
+
+

@@ -65,10 +65,10 @@ def count_number_of_tokens_and_word_types (text):
 
 def do_sampling_and_get_values (sentences):
     values = []
-    for k in range (100):
+    for k in range (100): # how many datapoints we want to get for a sample
         i = 0
         sent_sample = []
-        while i < 1000: # i is a maximal number of tokens in a sample
+        while i < 1000: 
             sent = random.choice(sentences) #choose a sentence
             #print(sent)
             try:
@@ -77,7 +77,7 @@ def do_sampling_and_get_values (sentences):
                 sent_sample.append(sent) # add the sentence to the sample
                 i += n_of_tokens
             except ZeroDivisionError:
-                print ("Can't find any tokens in this sentence:", sent, ".")
+                print ("Can't find any tokens in this sentence:", sent)
         sent_sample = ' '.join(sent_sample) # unite all sentence in one text
         value = count_number_of_tokens_and_word_types (sent_sample)[2] # 0 for tokens; 1 for types; 2 for ttr
         values.append(value)
@@ -104,69 +104,60 @@ def main ():
 ##    plt.show()
 
 
-    #histogram with all languages on the same graph
+    #violinplots with facetization
 
-    languages = ['agx-folklore', 'ava-folklore', 'kum-folklore', 'rut-folklore', 'dar-folklore', 'tab-folklore',
-                 'lak-folklore', 'lez-folklore', 'nog-folklore', 'tkr-folklore', 'tat-folklore', 'rus-folklore']
-    #languages = ['agx-folklore', 'ava-folklore', 'kum-folklore']
-    dict1 = {}
+    #languages = ['agx-folklore', 'ava-folklore', 'kum-folklore', 'rut-folklore', 'dar-folklore', 'tab-folklore',
+    #             'lak-folklore', 'lez-folklore', 'nog-folklore', 'tkr-folklore', 'tat-folklore', 'rus-folklore']
+
+    languages = ['kum-folklore', 'lez-folklore', 'dar-folklore', 'lak-folklore']
+    volumes = ['tom1', 'tom2', 'tom3', 'tom4']
+    #volumes = ['tom1']
+    dicts = []
     for language in languages:
+        dict_lang = {}
         print(language)
-        sentences = make_list_with_sentences ("../folklore_texts/%s.txt" % language)
-        values = do_sampling_and_get_values (sentences)
-        dict1[language] = values
+        for volume in volumes:
+            print(volume)
+            sentences = make_list_with_sentences ("../folklore_texts/%s-%s.txt" % (language, volume))
+            values = do_sampling_and_get_values (sentences)
+            dict_lang[volume] = values
+        dicts.append(dict_lang)
 
-        #sns.distplot(values, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 2}, label = language)
-
-##    languages = ['rus-anna-karenina', 'eng-tom-sawyer', 'avar-poetry', 'avar-drama']
-##    for language in languages:
-##        print(language)
-##        sentences = make_list_with_sentences ("random_texts_cleaned/%s.txt" % language)
-##        values = do_sampling_and_get_values (sentences)
-##
-##        sns.distplot(values, hist = False, kde = True, kde_kws = {'shade': True, 'linewidth': 2}, label = language)
-
-
-    df = pd.DataFrame(data=dict1)
+    dfs = [
+        pd.DataFrame([[k, el, cat] for k, v in dct.items() for el in v])
+        for dct, cat in zip(dicts, languages)
+        ]
+    cols = {'columns': {0: 'Volume', 1: 'TTR', 2: 'Language'}}
+    df = pd.concat(dfs).reset_index(drop=True).rename(**cols)
+    print(df)
 
 
 
-
+    
     df_csv = df.to_csv(index=False)
-    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/statistics/language_comparison_100_datapoints_per_language.txt'
+    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/statistics/volume_comparison_100_datapoints_per_volume.txt'
     f = open (path, 'w', encoding = 'utf-8')
     f.write (df_csv)
     f.close
 
 
-    index_sort = df.mean().sort_values().index
-    df_sorted = df[index_sort]
-    # plotting the boxplot for the data  
-    sns.violinplot(data = df_sorted) 
-  
-    # Label x-axis 
-    plt.xlabel('Language') 
-  
-    # labels y-axis 
-    plt.ylabel('TTR in a sample of random sentences (~ 1000 tokens)')
-
+    g = sns.FacetGrid(df, col="Language")
+    g.map(sns.violinplot, "Volume", "TTR")
     plt.show()
 
 
-    #matplotlib plots
-
-##    labels, data = [*zip(*dict1.items())]  # 'transpose' items to parallel key, value lists
+##    df = pd.DataFrame(data=dict1)
+##    index_sort = df.mean().sort_values().index
+##    df_sorted = df[index_sort]
+##    # plotting the boxplot for the data  
+##    sns.violinplot(data = df_sorted) 
+##  
+##    # Label x-axis 
+##    plt.xlabel('Language') 
+##  
+##    # labels y-axis 
+##    plt.ylabel('TTR in a sample of random sentences (~ 1000 tokens)')
 ##
-##    # or backwards compatable    
-##    labels, data = dict1.keys(), dict1.values()
-##
-##    plt.boxplot(data)
-##    plt.xticks(range(1, len(labels) + 1), labels)
-##    plt.show()
-
-
-##    plt.legend(title = 'Language')
-##    plt.xlabel('TTR in a sample of random sentences (~ 1000 tokens)')
 ##    plt.show()
 
 

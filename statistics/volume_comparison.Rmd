@@ -1,0 +1,41 @@
+---
+title: "Comparison of TTR between volumes"
+output: html_notebook
+---
+
+```{r}
+library("tidyverse")
+```
+
+
+```{r}
+df <- read.csv("volume_comparison_100_datapoints_per_volume.txt", header = TRUE, sep = ",")
+summary(df)
+```
+
+```{r}
+df %>%
+  filter(Language == "kum-folklore") -> df1
+df1
+```
+```{r}
+aov_res <- aov(TTR ~ Volume, data = df1)
+summary(aov_res)
+```
+
+```{r}
+library("ggpubr")
+```
+
+```{r}
+df  %>%
+  ggplot(aes(Volume, TTR, color = Volume))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.1)+
+  labs(x = "Volume",
+       y = "TTR")+
+  theme_bw()+
+  theme(legend.position = "none")+
+  facet_grid(cols = vars(Language))
+```
+
