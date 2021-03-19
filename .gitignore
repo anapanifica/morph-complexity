@@ -20,12 +20,7 @@ bible_texts/dar-x-bible.txt
 bible_texts/eng-x-bible-newinternational.txt
 bible_texts/rus-x-bible-synodal.txt
 bible_texts/tab-x-bible.txt
-bible_texts/ava-luke.txt
-bible_texts/agx-luke.txt
-bible_texts/dar-luke.txt
-bible_texts/eng-luke.txt
-bible_texts/rus-luke.txt
-bible_texts/tab-luke.txt
+bible_texts/*-luke.txt
 .DS_Store
 random_texts_cleaned/avar-drama.txt
 random_texts_cleaned/avar-poetry.txt
@@ -38,3 +33,4 @@ folklore_texts/*.txt
 folklore_texts/SVOD/*.txt
 folklore_texts/SVOD/*.doc
 sampling/random_texts/*.txt
+.ipynb_checkpoints
