@@ -37,3 +37,4 @@ folklore_texts/.DS_Store
 folklore_texts/*.txt
 folklore_texts/SVOD/*.txt
 folklore_texts/SVOD/*.doc
+sampling/random_texts/*.txt
