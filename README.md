@@ -126,3 +126,8 @@ To check whether TTR in previous plots reflects the complexity of the language a
 
 Figure 19. TTR in Russian translations of folklore texts (1000 TTRs / language).
 ![Figure 19](sampling/Figure_19.png)
+
+Violinplots for bible texts (Gospel of Luke):
+
+Figure 20. TTR in bible texts (1000 TTRs / language).
+![Figure 20](sampling/Figure_20.png)
