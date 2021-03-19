@@ -85,20 +85,24 @@ Figure 14. Distribution of TTR in a sample of sentences (+ non-bible texts).
 Figure 15. Distribution of TTR in samples of sentences from folklore texts.
 ![Figure 15](sampling/Figure_15.png)
 
-The total number of tokens:  
-agx-folklore.txt 4896  
-ava-folklore.txt 36058  
-kum-folklore.txt 45471  
-rut-folklore.txt 19139  
-dar-folklore.txt 32456  
-tab-folklore.txt 23706  
-lak-folklore.txt 31191  
-lez-folklore.txt 39571  
-nog-folklore.txt 5065  
-tkr-folklore.txt 4571  
-tat-folklore.txt 18961 
+The total number of tokens:
 
-Russian translations are added as `rus-folklore`.
+agx-folk.txt  4839
+ava-folk.txt  35532
+kum-folk.txt  44748
+rut-folk.txt  18845
+dar-folk.txt  31931
+tab-folk.txt  23430
+lak-folk.txt  30796
+lez-folk.txt  39082
+nog-folk.txt  4967
+tkr-folk.txt  4495
+tat-folk.txt  18742
+rus-folk.txt  288801
+arch-folk.txt  9094
+khv-folk.txt  6704
+
+Russian translations from SVOD are added as `rus-folk`.
 
 Figure 16. Distribution of TTR in samples of sentences from folklore texts.
 ![Figure 16](sampling/Figure_16.png)

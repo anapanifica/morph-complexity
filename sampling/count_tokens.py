@@ -46,8 +46,8 @@ def tokenization (path):
 
     print("\nText : ", path)
     print ("The total number of tokens are : ", tokens)
-    print ("Different types of tokens are : ", types)
-    print ("The TTR (Type by Tokens Ratio) is :", ttr)
+##    print ("Different types of tokens are : ", types)
+##    print ("The TTR (Type by Tokens Ratio) is :", ttr)
 
     return token_count
 
@@ -65,21 +65,27 @@ def frequency_list (token_count, file_name):
     with open(file_name, 'w') as file:
         file.writelines("%s\n" % place for place in token_ranks)
 
-    print ("Top 20 tokens and their frequency : \n",token_ranks[:20])
+    #print ("Top 20 tokens and their frequency : \n",token_ranks[:20])
 
 
 
 def main ():
-    languages = ['agx-folklore', 'ava-folklore', 'kum-folklore', 'rut-folklore', 'dar-folklore', 'tab-folklore',
-                 'lak-folklore', 'lez-folklore', 'nog-folklore', 'tkr-folklore', 'tat-folklore']
+    languages = ['agx-folk', 'ava-folk', 'kum-folk', 'rut-folk', 'dar-folk', 'tab-folk',
+                 'lak-folk', 'lez-folk', 'nog-folk', 'tkr-folk', 'tat-folk', 'rus-folk',
+                 'arch-folk', 'khv-folk']
     #languages = ['dar']
+
+
+
+
     for language in languages:
         path = "../folklore_texts/%s.txt" % language
         token_count = tokenization (path)
-        file_name = language + "_freq.txt"
-        frequency_list (token_count, file_name)
-##    token_count = tokenization ("tom.txt")[0]
-##    frequency_list (token_count, "tom_freq.txt")
+##        file_name = language + "_freq.txt"
+##        frequency_list (token_count, file_name)
+
+
+
 
 
 
