@@ -122,4 +122,7 @@ Comparison of TTR across volumes for languages with a large number of tokens:
 Figure 18. TTR in folklore texts (1000 TTRs / language).
 ![Figure 18](sampling/Figure_18.png)
 
+To check whether TTR in previous plots reflects the complexity of the language and not the texts, Russian translations of the texts in each of the languages are taken instead.
 
+Figure 19. TTR in Russian translations os folklore texts (1000 TTRs / language).
+![Figure 19](sampling/Figure_19.png)
