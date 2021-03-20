@@ -33,6 +33,9 @@ df1_long  %>%
   theme(legend.position = "none")
 ```
 
+## Pairwise t-test
+
+Holm-Bonferroni method
 
 ```{r}
 p.values <- pairwise.t.test(df1_long$value, df1_long$key, 
@@ -40,6 +43,31 @@ p.values <- pairwise.t.test(df1_long$value, df1_long$key,
 p.values
 ```
 
+## Effect sizes
+
+```{r}
+library("rstatix")
+```
+
+
+```{r}
+effect.sizes <- cohens_d(df1_long, value ~ key, paired = T)
+print(effect.sizes)
+```
+
+## Effect size heatmap
+
+```{r}
+effect.sizes.plot <- ggplot(as.data.frame(effect.sizes), aes(group1, group2)) +
+  geom_tile(aes(fill = abs(effsize)), color = "white") +
+  scale_fill_gradient2(low = "light blue", mid = "light grey", high = "red", 
+                       midpoint = 0.5, limit = c(0, 7.5)) +
+  geom_text(aes(label = round(abs(effsize), 2))) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+effect.sizes.plot
+```
 
 # 1000 TTRs per language
 
@@ -61,12 +89,37 @@ df2_long  %>%
   theme(legend.position = "none")
 ```
 
+## Pairwise t-test
+
+Holm-Bonferroni method
 
 ```{r}
 p.values <- pairwise.t.test(df2_long$value, df2_long$key, 
                      paired = T, p.adjust.method = "holm") 
 p.values
 ```
+
+## Effect sizes
+
+```{r}
+effect.sizes <- cohens_d(df2_long, value ~ key, paired = T)
+head(effect.sizes)
+```
+
+## Effect size heatmap
+
+```{r}
+effect.sizes.plot <- ggplot(as.data.frame(effect.sizes), aes(group1, group2)) +
+  geom_tile(aes(fill = abs(effsize)), color = "white") +
+  scale_fill_gradient2(low = "light blue", mid = "light grey", high = "red", 
+                       midpoint = 0.5, limit = c(0, 7.5)) +
+  geom_text(aes(label = round(abs(effsize), 2))) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+effect.sizes.plot
+```
+
 
 # Volume comparison
 
@@ -87,6 +140,11 @@ df3  %>%
   theme(legend.position = "none")+
   facet_grid(cols = vars(Language))
 ```
+
+
+## Pairwise t-tests
+
+Holm-Bonferroni method
 
 ```{r}
 p.values <-   pairwise.t.test(filter(df3, Language == "dar-folklore")$TTR,
