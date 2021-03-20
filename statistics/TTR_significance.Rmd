@@ -1,0 +1,117 @@
+---
+title: "TTR across languages of Daghestan"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r, echo=FALSE, include=FALSE}
+library("tidyverse")
+```
+
+# 100 TTRs per language
+
+```{r}
+df1 <- read.csv("TTR_100_datapoints_per_language.txt",
+                header = TRUE, sep = ",")
+df1_long <- gather(df1)
+head(df1_long)
+```
+
+```{r, echo=FALSE, include=FALSE}
+library("ggpubr")
+```
+
+```{r}
+df1_long  %>%
+  ggplot(aes(reorder(key, value, FUN = median), value, color = key))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.1)+
+  labs(x = "Language",
+       y = "TTR")+
+  theme_bw()+
+  theme(legend.position = "none")
+```
+
+
+```{r}
+p.values <- pairwise.t.test(df1_long$value, df1_long$key, 
+                     paired = T, p.adjust.method = "holm") 
+p.values
+```
+
+
+# 1000 TTRs per language
+
+```{r}
+df2 <- read.csv("TTR_1000_datapoints_per_language.txt",
+                header = TRUE, sep = ",")
+df2_long <- gather(df2)
+head(df2_long)
+```
+
+```{r}
+df2_long  %>%
+  ggplot(aes(reorder(key, value, FUN = median), value, color = key))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.1)+
+  labs(x = "Language",
+       y = "TTR")+
+  theme_bw()+
+  theme(legend.position = "none")
+```
+
+
+```{r}
+p.values <- pairwise.t.test(df2_long$value, df2_long$key, 
+                     paired = T, p.adjust.method = "holm") 
+p.values
+```
+
+# Volume comparison
+
+```{r}
+df3 <- read.csv("volume_comparison_100_datapoints_per_volume.txt",
+                header = TRUE, sep = ",")
+head(df3)
+```
+
+```{r}
+df3  %>%
+  ggplot(aes(Volume, TTR, color = Volume))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.1)+
+  labs(x = "Volume",
+       y = "TTR")+
+  theme_bw()+
+  theme(legend.position = "none")+
+  facet_grid(cols = vars(Language))
+```
+
+```{r}
+p.values <-   pairwise.t.test(filter(df3, Language == "dar-folklore")$TTR,
+                              filter(df3, Language == "dar-folklore")$Volume,
+                              paired = T, p.adjust.method = "holm")
+p.values
+```
+
+```{r}
+p.values <-   pairwise.t.test(filter(df3, Language == "kum-folklore")$TTR,
+                              filter(df3, Language == "kum-folklore")$Volume,
+                              paired = T, p.adjust.method = "holm")
+p.values
+```
+
+```{r}
+p.values <-   pairwise.t.test(filter(df3, Language == "lak-folklore")$TTR,
+                              filter(df3, Language == "lak-folklore")$Volume,
+                              paired = T, p.adjust.method = "holm")
+p.values
+```
+
+```{r}
+p.values <-   pairwise.t.test(filter(df3, Language == "lez-folklore")$TTR,
+                              filter(df3, Language == "lak-folklore")$Volume,
+                              paired = T, p.adjust.method = "holm")
+p.values
+```

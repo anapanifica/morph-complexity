@@ -106,20 +106,21 @@ def main ():
 
     #violinplots with all languages on the same graph
 
-##    languages = ['agx-folk', 'ava-folk', 'kum-folk', 'rut-folk', 'dar-folk', 'tab-folk',
-##                 'lak-folk', 'lez-folk', 'nog-folk', 'tkr-folk', 'tat-folk', 'rus-folk',
-##                 'arch-folk', 'khv-folk']
+    languages = ['agx-folk', 'ava-folk', 'kum-folk', 'rut-folk', 'dar-folk', 'tab-folk',
+                 'lak-folk', 'lez-folk', 'nog-folk', 'tkr-folk', 'tat-folk', 'rus-folk',
+                 'arch-folk', 'khv-folk']
 
-    languages = ['agx2rus-folk', 'ava2rus-folk', 'kum2rus-folk', 'rut2rus-folk', 'dar2rus-folk', 'tab2rus-folk',
-                 'lak2rus-folk', 'lez2rus-folk', 'nog2rus-folk', 'tkr2rus-folk', 'tat2rus-folk',
-                 'arch2rus-folk', 'khv2rus-folk']
+##    languages = ['agx2rus-folk', 'ava2rus-folk', 'kum2rus-folk', 'rut2rus-folk', 'dar2rus-folk', 'tab2rus-folk',
+##                 'lak2rus-folk', 'lez2rus-folk', 'nog2rus-folk', 'tkr2rus-folk', 'tat2rus-folk',
+##                 'arch2rus-folk', 'khv2rus-folk']
 
 
     #languages = ['agx-folklore', 'ava-folklore', 'kum-folklore']
     dict1 = {}
     for language in languages:
         print(language)
-        sentences = make_list_with_sentences ("../folklore_texts/rus_translations/%s.txt" % language)
+        #sentences = make_list_with_sentences ("../folklore_texts/rus_translations/%s.txt" % language)
+        sentences = make_list_with_sentences ("../folklore_texts/%s.txt" % language)
         values = do_sampling_and_get_values (sentences)
         dict1[language] = values
 
@@ -139,11 +140,11 @@ def main ():
 
 
 
-##    df_csv = df.to_csv(index=False)
-##    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/statistics/language_comparison_100_datapoints_per_language.txt'
-##    f = open (path, 'w', encoding = 'utf-8')
-##    f.write (df_csv)
-##    f.close
+    df_csv = df.to_csv(index=False)
+    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/statistics/TTR_1000_datapoints_per_language.txt'
+    f = open (path, 'w', encoding = 'utf-8')
+    f.write (df_csv)
+    f.close
 
 
     index_sort = df.mean().sort_values().index
