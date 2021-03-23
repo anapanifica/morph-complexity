@@ -1,7 +1,7 @@
 import re
 
 def get_txt ():
-    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/bible_texts/dar-x-bible.txt'
+    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/bible_texts/kum-x-bible.txt'
     f = open (path, 'r', encoding = 'utf-8')
     txt = f.read()
     f.close ()
@@ -18,7 +18,7 @@ def txt2luke (txt):
     return luke
 
 def save_txt (luke):
-    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/bible_texts/dar-luke.txt'
+    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/bible_texts/kum-luke.txt'
     f = open (path, 'a', encoding = 'utf-8')
     f.write (luke)
     f.close

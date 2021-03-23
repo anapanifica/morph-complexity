@@ -108,7 +108,7 @@ def main ():
 
     languages = ['agx-folk', 'ava-folk', 'kum-folk', 'rut-folk', 'dar-folk', 'tab-folk',
                  'lak-folk', 'lez-folk', 'nog-folk', 'tkr-folk', 'tat-folk', 'rus-folk',
-                 'arch-folk', 'khv-folk']
+                 'arch-folk', 'khv-folk', 'kar-folk']
 
 ##    languages = ['agx2rus-folk', 'ava2rus-folk', 'kum2rus-folk', 'rut2rus-folk', 'dar2rus-folk', 'tab2rus-folk',
 ##                 'lak2rus-folk', 'lez2rus-folk', 'nog2rus-folk', 'tkr2rus-folk', 'tat2rus-folk',

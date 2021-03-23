@@ -1,0 +1,17 @@
+---
+title: "Plot Morphology and Phonetics"
+output: html_notebook
+---
+
+```{r}
+library("tidyverse")
+```
+
+# Morphology 
+```{r}
+df1 <- read.csv("TTR_100_datapoints_per_language.txt",
+                header = TRUE, sep = ",")
+df1_long <- gather(df1)
+head(df1_long)
+```
+

@@ -52,7 +52,7 @@ library("rstatix")
 
 ```{r}
 effect.sizes <- cohens_d(df1_long, value ~ key, paired = T)
-print(effect.sizes)
+summary(effect.sizes)
 ```
 
 ## Effect size heatmap

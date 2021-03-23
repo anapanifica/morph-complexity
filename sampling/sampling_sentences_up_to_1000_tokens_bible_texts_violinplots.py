@@ -112,7 +112,7 @@ def main ():
 ##                 'arch-folk', 'khv-folk']
 
     languages = ['agx-luke', 'and-luke', 'ava-luke', 'dar-luke', 'eng-luke', 'lak-luke',
-                 'lez-luke', 'rus-luke', 'rut-luke', 'tab-luke', 'udi-luke']
+                 'lez-luke', 'rus-luke', 'rut-luke', 'tab-luke', 'udi-luke', 'kum-luke']
 
 
     #languages = ['agx-folklore', 'ava-folklore', 'kum-folklore']
