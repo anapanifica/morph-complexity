@@ -139,11 +139,11 @@ def main ():
 
 
 
-##    df_csv = df.to_csv(index=False)
-##    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/statistics/language_comparison_100_datapoints_per_language.txt'
-##    f = open (path, 'w', encoding = 'utf-8')
-##    f.write (df_csv)
-##    f.close
+    df_csv = df.to_csv(index=False)
+    path = '/Users/apanova/OneDrive/Documents/ConLab/MorphComplexity/morph-complexity/statistics/language_comparison_100_datapoints_per_language_bibles.txt'
+    f = open (path, 'w', encoding = 'utf-8')
+    f.write (df_csv)
+    f.close
 
 
     index_sort = df.mean().sort_values().index
